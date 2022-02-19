@@ -13,7 +13,6 @@ class HttpServiceImpl extends HttpService {
     try {
       var result = await http.get(Uri.parse(BASE_URL + "/joke/Any"));
       if (result.statusCode == 200) {
-        print(result.body);
         var response = jokeModelFromJson(result.body);
         return response;
       } else {

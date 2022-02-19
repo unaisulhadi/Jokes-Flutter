@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:jokes_app/controllers/controller.dart';
 import 'package:jokes_app/widgets/joke_widget.dart';
+
+import 'home_controller.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -13,6 +14,19 @@ class HomeScreen extends StatelessWidget {
 
     return Obx(
       () => Scaffold(
+        appBar: AppBar(
+          title: const Text('Home'),
+          actions: [
+            IconButton(
+                onPressed: () {
+                  Get.toNamed('/settings');
+                },
+                icon: const Icon(
+                  Icons.settings,
+                  color: Colors.white,
+                ))
+          ],
+        ),
         body: controller.isLoading.isTrue
             ? const Center(child: CircularProgressIndicator())
             : controller.joke != null

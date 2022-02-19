@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:jokes_app/bindings/binding.dart';
-import 'package:jokes_app/screens/home_screen.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:jokes_app/screens/home/home_binding.dart';
+import 'package:jokes_app/screens/home/home_screen.dart';
+import 'package:jokes_app/screens/settings/settings_binding.dart';
+import 'package:jokes_app/screens/settings/settings_screen.dart';
 
-void main() {
+void main() async {
+  await GetStorage.init();
   runApp(const MyApp());
 }
 
@@ -22,7 +26,12 @@ class MyApp extends StatelessWidget {
         GetPage(
             name: "/home",
             page: () => const HomeScreen(),
-            binding: HomeBinding())
+            binding: HomeBinding()),
+
+        GetPage(
+            name: "/settings",
+            page: () => SettingsScreen(),
+            binding: SettingsBinding()),
       ],
     );
   }
