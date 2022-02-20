@@ -30,8 +30,8 @@ class MyApp extends StatelessWidget {
 
         GetPage(
             name: "/settings",
-            page: () => SettingsScreen(),
-            binding: SettingsBinding()),
+            page: () => const SettingsScreen(),
+            binding: SettingsBinding(),),
       ],
     );
   }

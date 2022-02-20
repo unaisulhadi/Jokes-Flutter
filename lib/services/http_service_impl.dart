@@ -8,10 +8,11 @@ import 'package:http/http.dart' as http;
 const BASE_URL = "https://v2.jokeapi.dev";
 
 class HttpServiceImpl extends HttpService {
+
   @override
-  Future<JokeModel?> getJoke() async {
+  Future<JokeModel?> getJoke(String categories, String blackListed) async{
     try {
-      var result = await http.get(Uri.parse(BASE_URL + "/joke/Any"));
+      var result = await http.get(Uri.parse(BASE_URL + "/joke/$categories?blacklistFlags=$blackListed"));
       if (result.statusCode == 200) {
         var response = jokeModelFromJson(result.body);
         return response;
@@ -24,4 +25,5 @@ class HttpServiceImpl extends HttpService {
       return null;
     }
   }
+
 }
