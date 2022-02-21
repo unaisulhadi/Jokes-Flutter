@@ -1,15 +1,14 @@
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:jokes_app/models/joke_model.dart';
-import 'package:jokes_app/screens/settings/settings_controller.dart';
 import 'package:jokes_app/services/http_service.dart';
 import 'package:jokes_app/services/http_service_impl.dart';
 
-class HomeController extends GetxController {
+class JokeController extends GetxController {
   late HttpService _httpService;
   late GetStorage _getStorage;
 
-  HomeController() {
+  JokeController() {
     _httpService = Get.find<HttpServiceImpl>();
     _getStorage = GetStorage();
 
@@ -91,4 +90,22 @@ class HomeController extends GetxController {
   void getJokeBlackList() {
     blackList.value = _getStorage.read('blackList') ?? _defaultBlackList;
   }
+
+  void setJokeCategory(String key, bool value) {
+    jokeCategories[key] = value;
+
+  }
+
+  void setBlackList(String key, bool value) {
+    blackList[key] = value;
+  }
+
+  Future<void> saveJokeCategory() async {
+    await _getStorage.write('jokeCategories', jokeCategories);
+  }
+
+  Future<void> saveBlackList() async {
+    await _getStorage.write('blackList', blackList);
+  }
+
 }

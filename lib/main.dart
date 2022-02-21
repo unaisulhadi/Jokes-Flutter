@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:jokes_app/screens/home/home_binding.dart';
-import 'package:jokes_app/screens/home/home_screen.dart';
-import 'package:jokes_app/screens/settings/settings_binding.dart';
-import 'package:jokes_app/screens/settings/settings_screen.dart';
+import 'package:jokes_app/bindings/binding.dart';
+import 'package:jokes_app/screens/home_screen.dart';
+import 'package:jokes_app/screens/settings_screen.dart';
 
 void main() async {
   await GetStorage.init();
@@ -22,16 +21,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       initialRoute: "/home",
+      initialBinding: Binding(),
       getPages: [
-        GetPage(
-            name: "/home",
-            page: () => const HomeScreen(),
-            binding: HomeBinding()),
-
-        GetPage(
-            name: "/settings",
-            page: () => const SettingsScreen(),
-            binding: SettingsBinding(),),
+        GetPage(name: "/home", page: () => const HomeScreen()),
+        GetPage(name: "/settings", page: () => const SettingsScreen()),
       ],
     );
   }

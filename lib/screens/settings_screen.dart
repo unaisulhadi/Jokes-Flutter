@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
-import 'package:jokes_app/screens/settings/settings_controller.dart';
+import 'package:jokes_app/controllers/controller.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.find<SettingsController>();
+    final controller = Get.find<JokeController>();
 
     return Obx(
       () => Scaffold(

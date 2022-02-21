@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:jokes_app/widgets/joke_widget.dart';
 
-import 'home_controller.dart';
+import '../controllers/controller.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.find<HomeController>();
+    final controller = Get.find<JokeController>();
     controller.getJoke();
 
     return Obx(
